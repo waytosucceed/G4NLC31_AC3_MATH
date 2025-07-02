@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap"
+    rel="stylesheet"
+  />
+  <title>Factor Division Activity</title>
+  <style>
+    .smallbtn.active,
+    .smallbtn.default {
+      background-color: #f56c6c;
+      color: #ffffff;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      margin: 2px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .smallbtn {
+      background-color: #6c757d;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      margin: 2px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .smallbtn:hover {
+      background-color: #007bff;
+    }
+
+    .questionButtons {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-height: 460px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    .questionButtons::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .questionButtons::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+
+    .questionButtons::-webkit-scrollbar-thumb {
+      background: #007bff;
+      border-radius: 3px;
+    }
+
+    .questionButtons::-webkit-scrollbar-thumb:hover {
+      background: #0056b3;
+    }
+
+    /* Division Layout Styles */
+    .division-container {
+      position: relative;
+      height: 500px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border: 2px dashed #dee2e6;
+      overflow: auto;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .division-table tr {
+  border-bottom: 2px solid black;
+}
+
+.division-table tr:last-child {
+  border-bottom: none; /* Optional: skip border after last row */
+}
+
+    .division-table {
+  border-collapse: collapse;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  table-layout: fixed;   /* ensures equal spacing */
+  width: 100%;           /* span full width of container */
+}
+
+    .division-table td {
+  padding: 8px;
+  text-align: center;
+  width: 1%;           /* works with table-layout: fixed to equalize */
+  height: 40px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+    .division-table .divisor {
+      border-right: 3px solid #333;
+      border-bottom: 3px solid #333;
+      background-color: #e3f2fd;
+    }
+
+    .division-table .dividend {
+      border-bottom: 3px solid #333;
+      background-color: #fff3e0;
+    }
+
+    .division-table .quotient {
+      background-color: #f3e5f5;
+    }
+
+    .division-table .remainder {
+      background-color: #e8f5e8;
+    }
+
+    .division-table .empty-cell {
+      background-color: white;
+      border: 2px dashed #f44336;
+    }
+
+    .division-table input {
+      border: none;
+      background: transparent;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      width: 100%;
+      outline: none;
+    }
+
+    .division-table .red-text {
+      color: #d32f2f;
+    }
+
+    .question-section {
+  background: linear-gradient(to right, #e3f2fd, #f1f8e9);
+  border-radius: 15px;
+  padding: 30px;
+  border: 2px solid #cfd8dc;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  min-height: 500px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.question-section:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.question-text {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-family: 'Itim', cursive;
+  text-align: left;
+  padding-left: 10px;
+  border-left: 4px solid #007bff;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.btnContainer {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.messageContainer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.message {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #444;
+  margin-top: 15px;
+}
+
+.flip {
+  display: inline-block;
+  animation: flipIn 0.6s ease-in-out forwards;
+}
+
+@keyframes flipIn {
+  0% {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+
+    .completion-screen {
+      text-align: center;
+      padding: 50px;
+    }
+
+    .completion-screen h2 {
+      color: #28a745;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .completion-screen .emoji {
+      font-size: 4rem;
+      margin: 20px 0;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 10px;
+      color: black;
+    }
+
+    .flip {
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .division-table {
+        font-size: 1rem;
+      }
+      
+      .division-table td {
+        padding: 6px 8px;
+        min-width: 50px;
+        height: 35px;
+      }
+      
+      .question-text {
+        font-size: 1.4rem;
+      }
+      
+      .maindiv {
+        flex-direction: column;
+      }
+      
+      .maindiv > div {
+        width: 100% !important;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio id="cheers">
+    <source src="cheers.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="sound" src="points.mp3"></audio>
+  <audio id="fail" src="fail.mp3"></audio>
+
+  <!-- Header Section -->
+  <div
+    class="header"
+    style="
+      width: auto;
+      box-shadow: 5px 5px 10px rgb(0, 0, 0);
+      padding-bottom: 10px;
+    "
+  >
+    <img
+      src="Logo.png"
+      width="5%"
+      style="float: left; margin-top: 25px; text-align: left"
+      class="img-responsive"
+    />
+    <span>
+      <img
+        src="header.png"
+        width="30%"
+        height=""
+        class="img-responsive"
+        style="text-align: left"
+      />
+    </span>
+  </div>
+  <br />
+
+  <center>
+    <!-- Topic Heading -->
+    <h1 id="heading">Factor Division Problems</h1>
+    
+    <!-- Question Navigation Buttons -->
+    <div id="questionButtons" class="questionButtons">
+      <!-- Dynamic buttons will be inserted here -->
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="maindiv container-fluid d-flex">
+      <!-- Question Section (Right Side) -->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="question-section">
+          <div id="question-text" class="question-text"></div>
+          <div class="btnContainer col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-2">
+            <button
+              id="submitbtn"
+              class="btn btn-lg btn-success"
+              onclick="checkAnswers()"
+            >
+              Submit
+            </button>
+            <button
+              id="nextbtn"
+              class="btn btn-lg btn-primary"
+              onclick="newques()"
+              style="display: none; margin-left: 10px;"
+            >
+              Next
+            </button>
+          </div>
+          <div class="messageContainer col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-2">
+            <p id="message" class="message"></p>
+          </div>
+          
+          <!-- Completion Screen -->
+          <div id="completion-screen" class="completion-screen" style="display: none;">
+            <h2>🎉 Congratulations! 🎉</h2>
+            <div class="emoji">🌟</div>
+            <p style="font-size: 1.3rem; color: #666;">You've completed all the factor division problems!</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Division Layout Section (Left Side) -->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="division-container" id="division-container">
+          <table class="division-table" id="division-table">
+            <!-- Dynamic table will be inserted here -->
+          </table>
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <script>
+      // Sample factor division questions data
+      const divisionQuestions = [
+        {
+          id: 1,
+          question: "A glowing board displays a puzzle:<br> Fill in the missing number to find the HCF of given numbers:",
+          numbers: [18, 24, 30],
+          steps: [
+            { divisor: 2, dividends: [12, 36, 48], quotients: [6, 18, 24] },
+            { divisor: 2, dividends: [6, 18, 24], quotients: [3, 9, 12], inputs: [1, 2] }, // inputs at positions 0 and 1
+            { divisor: 3, dividends: [3, 9, 12], quotients: [1, 3, 4], inputs: [1, 2] },
+            {  dividends: [1, 3, 4]}  // input at position 0 (should be 1)
+          ],
+          hcf: 6,
+          answers: {
+            step1_quotient1: 18,
+            step1_quotient2: 24,
+            step2_quotient1: 9,
+            step2_quotient2: 12,
+          }
+        },
+        {
+          id: 2,
+          question: "Another board lights up: <br>Fill in the missing number to find the HCF of given numbers:",
+          numbers: [18, 24, 30],
+          steps: [
+            { divisor: 2, dividends: [18, 24, 30], quotients: [9, 12, 15] },
+            { divisor: null, dividends: [9, 12, 15], quotients: [3, 4, 5], inputs: [1, 2] }, // inputs at positions 0 and 1
+            { divisor: 3, dividends: [3, 4, 5], inputs: [1] } 
+          ],
+          hcf: 6,
+          answers: {
+            step1_quotient1: 12,
+            step1_quotient2: 15,
+            step1_divisor: 2,
+            step2_quotient1: 4,
+          }
+        },
+        {
+          id: 3,
+          question: "Ben found a half-solved problem. Fill in the missing number to find the HCF of given numbers:",
+          numbers: [60, 84, 108],
+          steps: [
+            { divisor: 2, dividends: [60, 84, 108], quotients: [30, 42, 54] },
+            { divisor: 2, dividends: [30, 42, 54], quotients: [15, 21, 27], inputs: [2] }, // input at position 2
+            { divisor: 3, dividends: [15, 21, 27], quotients: [5, 7, 9], inputs: [1] }, // input at position 1
+            { divisor: 3, dividends: [5, 7, 9], quotients: [5, 7, 3], inputs: [0] }, 
+            { divisor: 3, dividends: [5, 7, 3], quotients: [5, 7, 1], inputs: [1] },
+            { divisor: 5, dividends: [5, 7, 1], quotients: [1, 7, 1]},
+            { divisor: 7, dividends: [1, 7, 1], quotients: [1, 1, 1]},
+            {  dividends: [1, 1, 1]},
+          ],
+          hcf: 12,
+          answers: {
+            step1_quotient2: 54,
+            step2_quotient1: 21,
+            step3_quotient0: 5,
+            step4_quotient1: 7,
+          
+          }
+        }
+      ];
+
+      let currentQuestion = 0;
+      let currentDivision = null;
+
+      // Function to load question into UI
+      function loadQuestion() {
+        if (currentQuestion >= divisionQuestions.length) {
+          showCompletionScreen();
+          return;
+        }
+
+        const current = divisionQuestions[currentQuestion];
+        currentDivision = JSON.parse(JSON.stringify(current)); // Deep copy
+        
+        // Update question text
+        document.getElementById('question-text').innerHTML = current.question;
+        
+        // Clear previous message
+        document.getElementById('message').innerHTML = '';
+        document.getElementById('nextbtn').style.display = 'none';
+        document.getElementById('submitbtn').style.display = 'inline-block';
+        
+        // Hide completion screen
+        document.getElementById('completion-screen').style.display = 'none';
+        document.getElementById('question-text').style.display = 'block';
+        
+        renderDivisionTable();
+      }
+
+      function renderDivisionTable() {
+  const table = document.getElementById('division-table');
+  table.innerHTML = '';
+
+  const data = currentDivision;
+
+  // Loop through steps as rows
+  data.steps.forEach((step, stepIndex) => {
+    const row = table.insertRow();
+
+    // === Divisor Cell ===
+    const divisorCell = row.insertCell();
+    if (step.divisor !== null) {
+      divisorCell.textContent = step.divisor;
+      divisorCell.className = 'divisor red-text';
+    } else {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = '';
+      input.style.color = '#d32f2f';
+      input.addEventListener('input', function () {
+        const answerKey = `step${stepIndex}_divisor`;
+        currentDivision.userAnswers = currentDivision.userAnswers || {};
+        currentDivision.userAnswers[answerKey] = parseInt(this.value) || null;
+      });
+      divisorCell.appendChild(input);
+      divisorCell.className = 'divisor empty-cell';
+    }
+
+    // === Dividend Cells ===
+    step.dividends.forEach((val, index) => {
+      const cell = row.insertCell();
+
+      if (step.inputs && step.inputs.includes(index)) {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = '';
+        input.addEventListener('input', function () {
+          const answerKey = `step${stepIndex}_quotient${index}`;
+          currentDivision.userAnswers = currentDivision.userAnswers || {};
+          currentDivision.userAnswers[answerKey] = parseInt(this.value) || null;
+        });
+        cell.appendChild(input);
+        cell.className = 'quotient empty-cell';
+      } else {
+        cell.textContent = val;
+        cell.className = 'quotient';
+      }
+    });
+  });
+}
+
+      
+      // Function to check answers
+      function checkAnswers() {
+        const data = currentDivision;
+        const userAnswers = data.userAnswers || {};
+        const correctAnswers = data.answers;
+        
+        let allCorrect = true;
+        
+        for (const key in correctAnswers) {
+          if (userAnswers[key] !== correctAnswers[key]) {
+            allCorrect = false;
+            break;
+          }
+        }
+        
+        const messageElement = document.getElementById('message');
+        
+        if (allCorrect) {
+          messageElement.innerHTML = "Good Job! <div class='flip'>&#128512</div>";
+          messageElement.style.color = 'black';
+          // document.getElementById('sound').play();
+          document.getElementById('nextbtn').style.display = 'inline-block';
+          document.getElementById('submitbtn').style.display = 'none';
+        } else {
+          messageElement.innerHTML = 'Try Again! <div class="flip">😎</div>';
+          messageElement.style.color = 'black';
+          // document.getElementById('fail').play();
+        }
+      }
+
+      // Function to load next question
+      function newques() {
+        if (currentQuestion === divisionQuestions.length - 1) {
+          showCompletionScreen();
+        } else {
+          currentQuestion++;
+          loadQuestion();
+          
+          // Update active class in question selection buttons
+          const buttons = document.querySelectorAll('.smallbtn');
+          buttons.forEach((button, index) => {
+            if (index === currentQuestion) {
+              button.classList.add('active');
+            } else {
+              button.classList.remove('active');
+            }
+          });
+        }
+      }
+
+      function showCompletionScreen() {
+        document.getElementById('heading').innerHTML = '';
+        document.getElementById('question-text').style.display = 'none';
+        document.getElementById('completion-screen').style.display = 'block';
+        document.getElementById('division-container').innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem;">🎊</div>';
+        document.getElementById('message').style.display = 'none';
+        document.getElementById('nextbtn').style.display = 'none';
+        document.getElementById('submitbtn').style.display = 'none';
+        document.getElementById('questionButtons').style.display = 'none';
+        
+        const buttons = document.querySelectorAll('.smallbtn');
+        buttons.forEach(button => button.classList.remove('active'));
+        
+        // Play celebration sound
+        // document.getElementById('cheers').play();
+      }
+
+      // Function to handle button clicks for specific question
+      function abc(x) {
+        document.getElementById('heading').innerHTML = 'Factor Division Problems';
+        document.getElementById('question-text').style.display = 'block';
+        document.getElementById('completion-screen').style.display = 'none';
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('submitbtn').style.display = 'inline-block';
+        document.getElementById('questionButtons').style.display = 'flex';
+        
+        currentQuestion = x - 1;
+        loadQuestion();
+
+        // Remove active class from all buttons
+        const buttons = document.querySelectorAll('.smallbtn');
+        buttons.forEach(button => button.classList.remove('active'));
+
+        // Add active class to the clicked button
+        buttons[x - 1].classList.add('active');
+      }
+
+      // Initialize the quiz when window loads
+      window.onload = function () {
+        loadQuestion(); // Display the first question
+
+        // Generate question selection buttons dynamically
+        const questionButtonsContainer = document.getElementById('questionButtons');
+        divisionQuestions.forEach((_, index) => {
+          const button = document.createElement('button');
+          button.textContent = `Q${index + 13}`;
+          button.classList.add('smallbtn');
+          button.onclick = () => abc(index + 1);
+
+          // Add 'active' class to the first button
+          if (index === 0) {
+            button.classList.add('active');
+          }
+
+          questionButtonsContainer.appendChild(button);
+        });
+      };
+    </script>
+  </center>
+</body>
+</html>

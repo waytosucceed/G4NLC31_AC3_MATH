@@ -1,0 +1,68 @@
+[
+  {
+    "questionNo": "Q1",
+    "question": "Ben found a note: What is the prime factorisation of 45?",
+    "options": ["5 × 9", "9 × 5", "15 × 3", "3 × 3 × 5"],
+    "correct": 3
+  },
+  {
+    "questionNo": "Q2",
+    "question": "Liam pointed to a paper that said: Which of the following is the prime factorisation of 72?",
+    "options": ["2 × 6 × 6", "2 × 2 × 2 × 3 × 3", "3 × 3 × 4 × 2", "8 × 9"],
+    "correct": 1
+  },
+  {
+    "questionNo": "Q4",
+    "question": "Which of these prime factorisations gives a value greater than 100?",
+    "options": ["2 × 3 × 3 × 3 × 2", "5 × 5 × 5", "7 × 2 × 2 × 2", "2 × 2 × 5 × 5"],
+    "correct": 1
+  },
+  {
+    "questionNo": "Q5",
+    "question": "A card on the table had the number 108. What is the correct prime factorisation of 108?",
+    "options": ["2 × 3 × 18", "2 × 2 × 3 × 3 × 3", "3 × 3 × 6 × 2", "3 × 3 × 9 × 2"],
+    "correct": 1
+  },
+  {
+    "questionNo": "Q6",
+    "question": "The prime factors of 48 are 2 × 2 × 2 × 2 × 3. The prime factors of 60 are 2 × 2 × 3 × 5. What is their HCF?",
+    "options": ["6", "24", "10", "12"],
+    "correct": 3
+  },
+  {
+    "questionNo": "Q7",
+    "question": "Two numbers have the following prime factors: Number A = 2 × 2 × 3 × 3 × 5, Number B = 3 × 3 × 5 × 7. What is their HCF?",
+    "options": ["45", "90", "9", "45"],
+    "correct": 0
+  },
+  {
+    "questionNo": "Q8",
+    "question": "What is the HCF of 12 and 18 using prime factorisation?",
+    "options": ["3", "4", "6", "24"],
+    "correct": 2
+  },
+  {
+    "questionNo": "Q9",
+    "question": "Liam looked at a box labeled 30 and 45. What is the HCF of 30 and 45 using prime factorisation?",
+    "options": ["5", "15", "10", "3"],
+    "correct": 1
+  },
+  {
+    "questionNo": "Q10",
+    "question": "Which pair of numbers has the HCF equal to the product of two prime numbers?",
+    "options": ["18 and 24", "36 and 54", "42 and 63", "30 and 45"],
+    "correct": 3
+  },
+  {
+    "questionNo": "Q11",
+    "question": "The HCF of two numbers is 9. One number is 27. Which of the following could be the other number?",
+    "options": ["18", "36", "15", "45"],
+    "correct": 0
+  },
+  {
+    "questionNo": "Q12",
+    "question": "Which of these sets of prime factors give the lowest HCF?",
+    "options": ["2 × 3 × 5 and 2 × 5", "3 × 3 × 7 and 3 × 7", "2 × 2 × 3 and 2 × 3 × 3", "2 × 2 × 2 and 3 × 3"],
+    "correct": 3
+  }
+]
