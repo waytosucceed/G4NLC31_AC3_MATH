@@ -400,14 +400,13 @@
           numbers: [18, 24, 30],
           steps: [
             { divisor: 2, dividends: [18, 24, 30], quotients: [9, 12, 15] },
-            { divisor: null, dividends: [9, 12, 15], quotients: [3, 4, 5], inputs: [1, 2] }, // inputs at positions 0 and 1
+            { divisor: 3, dividends: [9, 12, 15], quotients: [3, 4, 5], inputs: [1, 2] }, // inputs at positions 0 and 1
             { divisor: 3, dividends: [3, 4, 5], inputs: [1] } 
           ],
           hcf: 6,
           answers: {
             step1_quotient1: 12,
             step1_quotient2: 15,
-            step1_divisor: 2,
             step2_quotient1: 4,
           }
         },
@@ -627,4 +626,5 @@
     </script>
   </center>
 </body>
+
 </html>
